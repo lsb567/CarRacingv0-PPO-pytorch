@@ -1,6 +1,7 @@
 import torch.nn as nn
 from config import Args, configure
 
+
 class Net(nn.Module):
     """
     Actor-Critic Network for PPO

@@ -8,15 +8,16 @@ from API_KEYS import api_key, project_name
 
 configs, use_cuda,  device = configure()
 
-## SET LOGGING
-experiment = Experiment(project_name = project_name,  api_key = api_key)
+# SET LOGGING
+experiment = Experiment(project_name=project_name,  api_key=api_key)
 experiment.log_parameters(configs.getParamsDict())
     
 
-def getTrainTest( isTest = False, experiment = None,):
+def getTrainTest(isTest=False, experiment=None,):
     if isTest:
         return experiment.test()
     return experiment.train()
+
 
 if __name__ == "__main__":
     
@@ -43,6 +44,6 @@ if __name__ == "__main__":
                     print("Dead at score = ", round(score, 2), ' || Timesteps = ', t, ' || Reason = ', reasonForDeath)
                     break
             
-            experiment.log_metric("scores", score , step= episodeIndex)
+            experiment.log_metric("scores", score, step=episodeIndex)
 
             print('Ep {}\tLast score: {:.2f}\n--------------------\n'.format(episodeIndex, score))
